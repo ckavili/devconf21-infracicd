@@ -1,0 +1,46 @@
+apiVersion: triggers.tekton.dev/v1alpha1
+kind: TriggerTemplate
+metadata:
+  name: tt-push 
+spec:
+  params:
+  - name: git-revision
+  - name: git-commit-message
+  - name: git-repo-url
+  - name: git-repo-name
+  - name: content-type
+  - name: pusher-name
+  resourcetemplates:
+  - apiVersion: tekton.dev/v1beta1
+    kind: PipelineRun
+    metadata:
+      annotations: {}
+      labels:
+        tekton.dev/pipeline: hello-pipeline
+      namespace: tauerbec-infracicd
+      name: hello-pipeline-push-$(uid)
+    spec:
+      params: []
+      pipelineRef:
+        name: hello-pipeline
+      resources: []
+      status: null
+      workspaces:
+      - name: playbooks
+        volumeClaimTemplate:
+          metadata:
+            name: ws-push-playbooks-$(uid)
+          spec:
+            accessModes: ["ReadWriteOnce"]
+            resources:
+               requests:
+                  storage: 1Gi
+      - name: inventories
+        volumeClaimTemplate:
+          metadata:
+            name: ws-push-inventories-$(uid)
+          spec:
+            accessModes: ["ReadWriteOnce"]
+            resources:
+               requests:
+                  storage: 1Gi

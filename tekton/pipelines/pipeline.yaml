@@ -1,0 +1,58 @@
+apiVersion: tekton.dev/v1alpha1
+kind: Pipeline
+metadata:
+  name: hello-pipeline
+spec:
+  workspaces:
+  - name: playbooks
+    description: |
+      This workspace will contain ansible playbooks
+  - name: inventories
+    description: |
+      This workspace will contain ansible inventories
+  tasks:
+    - name: pipeline-hello-task
+      taskRef:
+        name: hello-task
+    - name: get-inventories
+      taskRef:
+        name: git-clone
+      workspaces:
+      - name: output
+        workspace: inventories
+      params:
+#TODO: Replace url and revision with params
+      - name: url
+        value: https://github.com/tylerauerbeck/devconf21-infracicd
+      - name: revision
+        value: "main"
+      - name: deleteExisting
+        value: "true"
+    - name: get-playbooks
+      taskRef:
+        name: git-clone
+      workspaces:
+      - name: output
+        workspace: playbooks
+      params:
+#TODO: Replace url and revision with params
+      - name: url
+        value: https://github.com/redhat-cop/infra-ansible
+      - name: revision
+        value: "v2.0.4"
+      - name: deleteExisting
+        value: "true"
+    - name: lint-dns
+      workspaces:
+      - name: output
+        workspace: playbooks
+      taskRef:
+        name: ansible-lint
+      params:
+        - name: SKIP_LIST
+          value: "106,206,208,301,303,305"
+        - name: ARGS
+          value: ["$(workspaces.output.path)/roles/dns/config-dns-server-bind/"]
+      runAfter:
+        - get-inventories
+        - get-playbooks
