@@ -14,4 +14,4 @@ spec:
     - kind: ClusterTriggerBinding
       ref: github-push
     template:
-      ref: tt-push
+      ref: infracicd-push
