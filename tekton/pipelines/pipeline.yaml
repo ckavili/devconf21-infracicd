@@ -69,7 +69,7 @@ spec:
                 kubevirt.io/vm: vm-fedora
               generateName: vm-fedora-
             spec:
-              running: false
+              running: true 
               template:
                 metadata:
                   labels:
@@ -103,7 +103,7 @@ spec:
                       type: ""
                     resources:
                       requests:
-                        memory: 8Gi
+                        memory: 2Gi
                         cpu: "2"
                   terminationGracePeriodSeconds: 0
                   volumes:
