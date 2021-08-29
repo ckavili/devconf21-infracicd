@@ -110,9 +110,9 @@ spec:
                       - disk:
                           bus: virtio
                         name: containerdisk
-                      - disk:
+                      - name: cloudinitdrive
+                        disk:
                           bus: virtio
-                        name: cloudinitdisk
                       rng: {}
                     machine:
                       type: ""
