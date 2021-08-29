@@ -126,14 +126,12 @@ spec:
                       image: kubevirt/fedora-cloud-container-disk-demo:v0.32.0
                     name: containerdisk
                   - name: cloudinitdrive
-                      cloudInitConfigDrive:
-                        userData: |
-                          #cloud-config
-                          password: fedora
-                          hostname: fedora
-                          chpasswd: { expire: False }
-                          ssh_pwauth: True
-                          disable_root: false
+                    cloudInitConfigDrive:
+                      userData: |
+                        #cloud-config
+                        password: fedora
+                        hostname: fedora
+                        chpasswd: { expire: False }
       runAfter:
         - lint-dns
         - generate-keys
