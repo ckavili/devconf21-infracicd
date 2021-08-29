@@ -29,6 +29,8 @@ spec:
       image: quay.io/kubevirt/tekton-task-wait-for-vmi-status:v0.0.1
       command:
         - entrypoint
+      args:
+        - --debug
       env:
         - name: VMI_NAME
           value: $(params.vmiName)
