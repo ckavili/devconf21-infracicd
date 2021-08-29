@@ -56,6 +56,14 @@ spec:
       runAfter:
         - get-inventories
         - get-playbooks
+    - name: generate-keys
+      taskRef:
+        name: generate-ssh-keys
+      params:
+        - name: publicKeySecretName
+          value: dns-test-pub-$(context.pipelineRun.uid)
+        - name: privateKeySecretName
+          value: dns-test-priv-$(context.pipelineRun.uid)
     - name: create-vm
       taskRef:
         name: create-vm-from-manifest
@@ -123,6 +131,7 @@ spec:
                     name: cloudinitdisk
       runAfter:
         - lint-dns
+        - generate-keys
     - name: wait-for-vm
       taskRef:
         name: wait-for-vmi-status
