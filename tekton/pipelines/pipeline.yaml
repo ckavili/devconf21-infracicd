@@ -132,6 +132,6 @@ spec:
         - name: successCondition
           value: "status.phase == Running"
         - name: failureCondition
-          value: "status.phase not in (Running)"
+          value: "status.phase != Running"
       runAfter:
         - create-vm
