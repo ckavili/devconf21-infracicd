@@ -131,3 +131,7 @@ spec:
           value: "$(tasks.create-vm.results.name)"
         - name: successCondition
           value: "status.phase == Running"
+        - name: failureCondition
+          value: "status.phase not in (Running)"
+      runAfter:
+        - create-vm
