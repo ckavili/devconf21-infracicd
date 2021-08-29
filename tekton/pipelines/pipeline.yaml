@@ -123,11 +123,11 @@ spec:
                     name: cloudinitdisk
       runAfter:
         - lint-dns
-#    - name: wait-for-vm
-#      taskRef:
-#        name: wait-for-vmi-status
-#      params:
-#        - name: vmiName
-#          value: vmi-fedora-1
-#        - name: successCondition
-#          value: "status.phase == Succeeded"
+    - name: wait-for-vm
+      taskRef:
+        name: wait-for-vmi-status
+      params:
+        - name: vmiName
+          value: "$(tasks.create-vm.results.name)"
+        - name: successCondition
+          value: "status.phase == Running"
