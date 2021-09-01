@@ -119,7 +119,7 @@ spec:
                     resources:
                       requests:
                         memory: 8Gi
-                        cpu: "4"
+                        cpu: "8"
                   terminationGracePeriodSeconds: 0
                   volumes:
                   - containerDisk:
