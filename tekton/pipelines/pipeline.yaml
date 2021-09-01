@@ -165,6 +165,7 @@ spec:
     - name: execute-in-vm-dnf
       runAfter:
         - wait-for-vm
+        - generate-keys
       taskRef:
         name: execute-in-vm
       params:
