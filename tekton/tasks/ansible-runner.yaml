@@ -15,7 +15,6 @@ metadata:
 spec:
   description: >-
     Task to run Ansible playbooks using Ansible Runner
-
   workspaces:
     - name: runner-dir
       description: The Ansibler runner directory

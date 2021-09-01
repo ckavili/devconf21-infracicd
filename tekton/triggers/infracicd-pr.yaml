@@ -20,13 +20,12 @@ spec:
     metadata:
       annotations: {}
       labels:
-        tekton.dev/pipeline: hello-pipeline
-      namespace: tauerbec-infracicd
-      name: hello-pipeline-pr-$(uid) 
+        tekton.dev/pipeline: dns-ansible-pipeline
+      name: dns-ansible-pipeline-pr-$(uid) 
     spec:
       params: []
       pipelineRef:
-        name: hello-pipeline
+        name: dns-ansible-pipeline
       resources: []
       status: null
       workspaces:

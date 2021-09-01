@@ -1,7 +1,7 @@
 apiVersion: tekton.dev/v1alpha1
 kind: Pipeline
 metadata:
-  name: hello-pipeline
+  name: dns-ansible-pipeline
 spec:
   workspaces:
   - name: playbooks
@@ -17,7 +17,7 @@ spec:
       params:
 #TODO: Replace url and revision with params
       - name: url
-        value: https://github.com/tylerauerbeck/devconf21-infracicd
+        value: https://github.com/ckavili/devconf21-infracicd
       - name: revision
         value: "main"
       - name: deleteExisting
