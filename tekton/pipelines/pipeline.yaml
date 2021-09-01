@@ -65,7 +65,8 @@ spec:
         - name: privateKeySecretName
           value: dns-test-priv-$(context.pipelineRun.uid)
         - name: privateKeyConnectionOptions
-          value: ["user: fedora"]
+          value:
+            - 'user:root'
     - name: create-vm
       taskRef:
         name: create-vm-from-manifest
