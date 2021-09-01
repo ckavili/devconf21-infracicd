@@ -67,6 +67,7 @@ spec:
         - name: privateKeyConnectionOptions
           value:
             - 'user:root'
+            - 'disable-strict-host-key-checking:true'
     - name: create-vm
       taskRef:
         name: create-vm-from-manifest
