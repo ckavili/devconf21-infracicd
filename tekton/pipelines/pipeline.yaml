@@ -163,6 +163,8 @@ spec:
       runAfter:
         - create-vm
     - name: execute-in-vm-dnf
+      runAfter:
+        - wait-for-vm
       taskRef:
         name: execute-in-vm
       params:
