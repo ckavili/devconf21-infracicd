@@ -10,5 +10,5 @@ dns_data:
         state: present
     named:
       recursion: 'yes'
-    default_forwarders:
-    - 8.8.8.8
+#    default_forwarders:
+#    - 8.8.8.8
