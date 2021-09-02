@@ -2,7 +2,7 @@
 
 - hosts: dns-server 
   roles:
-    - role: infra-ansible/roles/dns/config-dns-server-bind
+    - role: dns/config-dns-server-bind
   tasks:
     - name: Ensure files exist
       file:
