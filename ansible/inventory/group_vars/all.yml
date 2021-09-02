@@ -7,6 +7,7 @@ dns_data:
   - name: private
     zones:
       - dns_domain: "rht-labs.io"
+        named: true
         state: present
     named:
       recursion: 'yes'
