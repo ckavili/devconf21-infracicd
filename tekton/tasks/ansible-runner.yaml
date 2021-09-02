@@ -89,4 +89,4 @@ spec:
       script: |
         #!/bin/bash
         chmod 700 $(workspaces.runner-dir.path)/inventory/ansible/env/ssh_key
-        ansible-playbook -i $(workspaces.runner-dir.path)/inventory/ansible/inventory $(workspaces.runner-dir.path)/infra-ansible/playbooks/provision-dns-server/configure-dns-server-bind.yml -e 'ansible_ssh_user=fedora' -e 'ansible_ssh_private_key_file=$(workspaces.runner-dir.path)/inventory/ansible/env/ssh_key' -e 'ansible_ssh_common_args="-o StrictHostKeyChecking=no"' --tags install
+        ansible-playbook -i $(workspaces.runner-dir.path)/inventory/ansible/inventory $(workspaces.runner-dir.path)/inventory/ansible/playbook.yml -e 'ansible_ssh_user=fedora' -e 'ansible_ssh_private_key_file=$(workspaces.runner-dir.path)/inventory/ansible/env/ssh_key' -e 'ansible_ssh_common_args="-o StrictHostKeyChecking=no"' --tags install
