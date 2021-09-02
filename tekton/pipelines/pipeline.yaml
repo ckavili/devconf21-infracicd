@@ -208,4 +208,18 @@ spec:
 #          value: ['-p', $(workspaces.runner-dir.path)/infra-ansible/playbooks/provision-dns-server/configure-dns-server-bind.yml, '--inventory', $(workspaces.runner-dir.path)/inventory/ansible/inventory]
         - name: secret-name
           value: "$(tasks.generate-keys.results.privateKeySecretName)"
-
+    - name: execute-in-vm-dnf
+      runAfter:
+        - wait-for-vm
+        - generate-keys
+      taskRef:
+        name: execute-in-vm
+      params:
+        - name: vmName
+          value: "$(tasks.create-vm.results.name)"
+        - name: secretName
+          value: "$(tasks.generate-keys.results.privateKeySecretName)"
+        - name: script
+          value: |
+            DNS=$(dig NS rht-labs.io @127.0.0.1 +short)
+            test ! -z $DNS 

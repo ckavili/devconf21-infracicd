@@ -6,6 +6,7 @@
   tasks:
     - name: Ensure files exist
       file:
+        state: touch
         path: "{{ item }}"
         owner: root
         group: root
