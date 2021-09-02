@@ -210,8 +210,7 @@ spec:
           value: "$(tasks.generate-keys.results.privateKeySecretName)"
     - name: execute-in-vm-dnf
       runAfter:
-        - wait-for-vm
-        - generate-keys
+        - ansible-run 
       taskRef:
         name: execute-in-vm
       params:
