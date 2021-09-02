@@ -17,7 +17,7 @@ spec:
       params:
 #TODO: Replace url and revision with params
       - name: url
-        value: https://github.com/ckavili/devconf21-infracicd
+        value: https://github.com/tylerauerbeck/devconf21-infracicd
       - name: revision
         value: "main"
       - name: deleteExisting
@@ -66,7 +66,7 @@ spec:
           value: dns-test-priv-$(context.pipelineRun.uid)
         - name: privateKeyConnectionOptions
           value:
-            - 'user:root'
+            - 'user:fedora'
             - 'disable-strict-host-key-checking:true'
     - name: create-vm
       taskRef:
