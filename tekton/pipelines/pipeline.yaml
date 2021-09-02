@@ -68,6 +68,7 @@ spec:
           value:
             - 'user:fedora'
             - 'disable-strict-host-key-checking:true'
+            - 'additional-ssh-options:-t'
     - name: create-vm
       taskRef:
         name: create-vm-from-manifest
